@@ -10,8 +10,11 @@ Desenvolva uma aplicação cliente, para o servidor descrito acima, que permita,
 ```
 ### Onde:
 host : host do servidor
+
 port : porta a qual o servidor web encontra-se em execução
+
 file_name : nome do arquivo procurado
+
 Exemplo de uma requisição possível: 
 ```
 192.168.1.212:6500/index.html
