@@ -1,26 +1,26 @@
 package miniServidorWeb;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
-
-import javax.swing.JOptionPane;
 
 public class Client {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		String host = args[0].split(":")[0];
+		int port = Integer.parseInt( args[0].split(":")[1].split("/")[0] );
+		String file = args[0].split(":")[1].split("/")[1];
 		
 		try {
 			
-			Socket socket = new Socket("localhost", 6500);
+			Socket socket = new Socket(host, port);
 			System.out.println("Conectado no servidor...");
 			DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-			out.writeUTF("Olá mundo!");
+			out.writeUTF("Olá mundo! " + file);
 			try {
 				Thread.sleep(10000);
+				socket.close();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
