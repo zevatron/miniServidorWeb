@@ -17,16 +17,21 @@ public class Client {
 			
 			Socket socket = new Socket("localhost", 6500);
 			System.out.println("Conectado no servidor...");
-			DataInputStream in = new DataInputStream(socket.getInputStream());
 			DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+			out.writeUTF("Olá mundo!");
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("desconectado.");
+//			DataInputStream in = new DataInputStream(socket.getInputStream());
 			
-			do{
-				out.writeUTF(JOptionPane.showInputDialog("Mensagem: "+Thread.currentThread().getName()));
-			} while (!socket.isClosed());
+//			do{
+//				out.writeUTF(JOptionPane.showInputDialog("Mensagem: "+Thread.currentThread().getName()));
+//			} while (!socket.isClosed());
 			
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

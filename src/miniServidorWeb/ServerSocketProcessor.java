@@ -16,19 +16,18 @@ public class ServerSocketProcessor implements Runnable {
 	
 	public ServerSocketProcessor(Socket socket){
 		this.socketClient = socket;
-		try {
-			this.in = (DataInputStream) socketClient.getInputStream();
-			this.out = (DataOutputStream) socketClient.getOutputStream();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		
+		try {
+			in = new DataInputStream( socketClient.getInputStream());
+			System.out.println(in.readUTF());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 
 	}

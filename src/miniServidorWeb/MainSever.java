@@ -16,7 +16,7 @@ public class MainSever {
 			while(true){
 				Socket s = serverSocket.accept();
 				System.out.println("Cliente conectado...");
-				new Thread(new ServerSocketProcessor(s));
+				new Thread(new ServerSocketProcessor(s)).start();
 				
 			}
 
